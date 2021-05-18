@@ -2,7 +2,10 @@ package com.groceryapp.implementation;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import com.groceryapp.dao.CategoryDao;
 import com.groceryapp.dao.ProductDao;
@@ -10,6 +13,8 @@ import com.groceryapp.entities.Category;
 import com.groceryapp.entities.Product;
 import com.groceryapp.service.ProductService;
 
+@Transactional
+@Component
 public class ProductServiceImplementation implements ProductService{
 	
 	@Autowired

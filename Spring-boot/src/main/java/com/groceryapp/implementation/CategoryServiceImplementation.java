@@ -2,7 +2,10 @@ package com.groceryapp.implementation;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import com.groceryapp.dao.CategoryDao;
 import com.groceryapp.dao.UserDao;
@@ -10,6 +13,8 @@ import com.groceryapp.entities.Category;
 import com.groceryapp.entities.User;
 import com.groceryapp.service.CategoryService;
 
+@Transactional
+@Component
 public class CategoryServiceImplementation implements CategoryService{
 	
 	@Autowired
@@ -54,6 +59,12 @@ public class CategoryServiceImplementation implements CategoryService{
 	public List<Category> findCategoriesForUser(long id) {
 		User user = userDao.findById(id).orElse(null);
 		   return user.getCategories();
+	}
+
+	@Override
+	public Category addCategory(Category category) {
+		// TODO Auto-generated method stub
+		return categoryDao.save(category);
 	}
 
 }

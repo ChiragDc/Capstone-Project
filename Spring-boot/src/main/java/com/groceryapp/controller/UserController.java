@@ -20,7 +20,7 @@ import com.groceryapp.entities.User;
 import com.groceryapp.service.UserService;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/")
 public class UserController {
 	
 	@Autowired
