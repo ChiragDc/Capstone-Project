@@ -1,13 +1,21 @@
 package com.groceryapp.entities;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
 @Entity
 @Table(name = "products")
@@ -28,13 +36,19 @@ public class Product {
 	 @JsonBackReference(value = "category")
 	 @ManyToOne
 	 private Category category;
+	 
+	 @JsonProperty(access = Access.WRITE_ONLY)
+		@ManyToMany(fetch = FetchType.LAZY)
+		@JoinTable(name = "tag_products", joinColumns = @JoinColumn(name = "tag_id"), inverseJoinColumns = @JoinColumn(name = "product_id"))
+		private List<Tag> tags;
 
 	public Product() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Product(Long id, String name, String description, Double price, String pictureUrl, Category category) {
+	public Product(Long id, String name, String description, Double price, String pictureUrl, Category category,
+			List<Tag> tags) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -42,6 +56,7 @@ public class Product {
 		this.price = price;
 		this.pictureUrl = pictureUrl;
 		this.category = category;
+		this.tags = tags;
 	}
 
 	public Long getId() {
@@ -91,7 +106,23 @@ public class Product {
 	public void setCategory(Category category) {
 		this.category = category;
 	}
-	 
+
+	public List<Tag> getTags() {
+		return tags;
+	}
+
+	public void setTags(List<Tag> tags) {
+		this.tags = tags;
+	}
+
+	public void addTag(Tag tag) {
+		if (getTags() == null) {
+			this.tags = new ArrayList<>();
+		}
+		if (!getTags().contains(tag)) {
+			getTags().add(tag);
+		}
+	}
 	 
 
 }

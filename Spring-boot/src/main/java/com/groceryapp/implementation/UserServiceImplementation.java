@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.groceryapp.dao.UserDao;
+import com.groceryapp.entities.Status;
 import com.groceryapp.entities.User;
 import com.groceryapp.service.UserService;
 
@@ -27,6 +28,7 @@ public class UserServiceImplementation implements UserService{
 	   }
 			
 	   for (User existUser : users) {
+		   
 	    if (user.getUsername().equals(existUser.getUsername())) {
 	     existUser.setUsername(existUser.getUsername());
 	     existUser.setPassword(existUser.getPassword());
@@ -76,5 +78,19 @@ public class UserServiceImplementation implements UserService{
 		    }
 		     return null;
 		 }
+
+	@Override
+	public Status loginUser(User user) {
+		// TODO Auto-generated method stub
+		List<User> users = userDao.findAll();
+        for (User other : users) {
+            if (other.equals(user)) {
+                
+            	
+                return Status.SUCCESS;
+            }
+        }
+        return Status.FAILURE;
+	}
 
 }

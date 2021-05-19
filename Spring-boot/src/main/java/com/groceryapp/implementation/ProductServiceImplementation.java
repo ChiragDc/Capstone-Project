@@ -15,20 +15,20 @@ import com.groceryapp.service.ProductService;
 
 @Transactional
 @Component
-public class ProductServiceImplementation implements ProductService{
-	
-	@Autowired
-	 private ProductDao productDao;
+public class ProductServiceImplementation implements ProductService {
 
-	 @Autowired
-	 private CategoryDao categoryDao;
-	 
+	@Autowired
+	private ProductDao productDao;
+
+	@Autowired
+	private CategoryDao categoryDao;
+
 	@Override
 	public Product addProductToCategory(Product product, long idCategory) {
 		// TODO Auto-generated method stub
-		 Category category = categoryDao.findById(idCategory).orElse(null);
-		   category.addProductToCategory(product);
-		   return productDao.save(product);
+		Category category = categoryDao.findById(idCategory).orElse(null);
+		category.addProductToCategory(product);
+		return productDao.save(product);
 	}
 
 	@Override
