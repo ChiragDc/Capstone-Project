@@ -1,4 +1,4 @@
-  
+<!--   
 <div class="card" style="width: 18rem;">
     <div class="card-body">
       <h5 class="card-title">Login</h5>
@@ -14,5 +14,76 @@
         </div>
         <button type="submit" class="btn btn-primary" (click)="addUser()">Login</button>
       </form>
+    </div>
+  </div> -->
+
+  <div class="container md-dialog-container rounded bg-light mt-4">
+    <div class="row justify-content-center">
+      <div class="col-md-9 fm">
+        <div class="card border-dark ">
+          <header class="card-header bg-dark">
+  
+            <h4 class="card-title mt-1 text-light text-center">Login</h4>
+          </header>
+          <article class="card-body">
+  
+            <div class="col-md-6 offset-md-3">
+  
+              <form #userForm="ngForm" (ngSubmit)="addUser()">
+  
+                <div class="form-group">
+                  <label>Username</label>
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text bg-dark text-light"><i class="fas fa-address-card"></i></span>
+                    </div>
+                    <input type="text" class="form-control" minlength="4" required #username="ngModel" id="username"
+                      [(ngModel)]="user.username" name="username"
+                      [class.is-invalid]="username.touched && username.invalid">
+                  </div>
+  
+                </div>
+                <span class="small text-danger" *ngIf="username.touched && username.invalid">Enter a username
+                  of atleast 4 charecters
+                </span>
+  
+<!--   
+                <div class="form-group">
+                  <label> Email</label>
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text bg-dark text-light"><i class="fas fa-address-card"></i></span>
+                    </div>
+                    <input type="text" class="form-control" required #email="ngModel"
+                      [class.is-invalid]="email.touched && email.invalid" id="email" [(ngModel)]="user.email"
+                      name="email">
+                  </div>
+                </div>
+                <span class="small text-danger" *ngIf="email.touched && email.invalid">Please Enter Email </span>
+   -->
+  
+                <div class="form-group">
+                  <label> Password</label>
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text bg-dark text-light"><i class="far fa-envelope"></i></span>
+                    </div>
+                    <input type="password" required #password="ngModel"
+                      [class.is-invalid]="password.touched && password.invalid" id="password" [(ngModel)]="user.password"
+                      name="lastName" class="form-control" id="password" minlength="4" [(ngModel)]="user.password" name="password">
+                  </div>
+                  <span class="small text-danger" *ngIf="password.touched && password.invalid">Please Enter Password of atleast 4 Charecters </span>
+                </div>
+                
+  
+                <br>
+                <button class="btn btn-dark container" mat-dialog-close [disabled]="!userForm.form.valid " type="submit">Login</button>
+  
+              </form>
+            </div>
+          </article>
+  
+        </div>
+      </div>
     </div>
   </div>

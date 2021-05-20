@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import Swal from 'sweetalert2';
 import { User } from '../Model';
 import { UserService } from '../service/user.service';
 
@@ -23,7 +24,11 @@ export class UpdateProfileComponent implements OnInit {
   updateUser(idUser: number) {
     this.userService.editUser(this.user, idUser).subscribe(user => {
       this.user = user;
-      window.location.reload();
+      Swal.fire('Updated Profile')
+      setTimeout(function () {
+        location.reload();
+      }, 3000);
+
     })
   }
 }

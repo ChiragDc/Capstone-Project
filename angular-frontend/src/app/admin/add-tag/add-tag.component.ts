@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Tag } from 'src/app/Model';
 import { TagService } from 'src/app/service/tag.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-add-tag',
@@ -30,7 +31,12 @@ export class AddTagComponent implements OnInit {
     } else {
       this.tagService.addTag(this.tag).subscribe(tag => {
         this.tag = tag;
-        window.location.reload();
+        Swal.fire('Tag Added')
+        setTimeout(function () {
+          window.location.reload();
+        }, 3000);
+
+
       })
     }
   }

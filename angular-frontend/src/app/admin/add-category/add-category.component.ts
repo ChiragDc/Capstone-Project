@@ -2,6 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Category } from 'src/app/Model';
 import { CategoryService } from 'src/app/service/category.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-add-category',
@@ -26,12 +27,20 @@ export class AddCategoryComponent implements OnInit {
     if (this.data.idCategory != null) {
       this.categoryService.editCategory(this.category, this.data.idCategory).subscribe(category => {
         this.category = category;
-        window.location.reload();
+        Swal.fire('Category Updated')
+        setTimeout(function () {
+          window.location.reload();
+        }, 3000);
+       
       })
     } else {
       this.categoryService.addCategoryToUser(this.category, this.data.idUser).subscribe(category => {
         this.category = category;
-        window.location.reload();
+        Swal.fire('Category Updated')
+        setTimeout(function () {
+          window.location.reload();
+        }, 3000);
+        
       })
     }
   }

@@ -1,10 +1,10 @@
-<div class="card" style="width: 18rem;">
+<!-- <div class="card" style="width: 18rem;">
     <div class="card-body">
       <h5 class="card-title">Add product</h5>
       <mat-progress-bar mode="buffer" *ngIf="progressBar"></mat-progress-bar>
       <form name="category" (ngSubmit)="addProduct()">
   
-        <h4>Add tag to product</h4>
+        
         <div class="mb-3">
           <label for="exampleInputEmail1" class="form-label">Name</label>
           <input type="text" class="form-control" name="name" [(ngModel)]="product.name">
@@ -25,4 +25,85 @@
         <button type="submit" class="btn btn-primary">Save</button>
       </form>
     </div>
+  </div> -->
+
+<div class="container  md-dialog-container rounded bg-light mt-4">
+  <div class="row justify-content-center">
+    <div class="col-md-9 fm">
+      <div class="card border-dark ">
+        <header class="card-header bg-dark">
+
+          <h4 class="card-title mt-1 text-light text-center">Add Product</h4>
+        </header>
+        <article class="card-body">
+
+          <div class="col-md-6 offset-md-3">
+
+            <form #userForm="ngForm" (ngSubmit)="addProduct()">
+
+              <div class="form-group">
+                <label>Name</label>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text bg-dark text-light"><i class="fas fa-address-card"></i></span>
+                  </div>
+                  <input type="text" class="form-control" required #name="ngModel" id="name" [(ngModel)]="product.name"
+                    name="name" [class.is-invalid]="name.touched && name.invalid">
+                </div>
+
+              </div>
+              <span class="small text-danger" *ngIf="name.touched && name.invalid">Enter Product Name
+              </span>
+
+
+              <div class="form-group">
+                <label> Price in Rs</label>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text bg-dark text-light"><i class="fas fa-address-card"></i></span>
+                  </div>
+                  <input type="number" class="form-control" required #price="ngModel"
+                    [class.is-invalid]="price.touched && price.invalid" id="price" [(ngModel)]="product.price"
+                    name="price">
+                </div>
+              </div>
+              <span class="small text-danger" *ngIf="price.touched && price.invalid">Price cant be Empty </span>
+
+
+              <div class="form-group">
+                <label> Picture Link</label>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text bg-dark text-light"><i class="far fa-envelope"></i></span>
+                  </div>
+                  <input type="text"  #pictureUrl="ngModel"
+                    id="pictureUrl"
+                    [(ngModel)]="product.pictureUrl" name="pictureUrl" class="form-control">
+                </div>
+               
+              </div>
+              <div class="form-group">
+                <label> Description</label>
+                <div class="input-group mb-3">
+                  
+                  <textarea  #description="ngModel"
+                   
+                    [(ngModel)]="product.description" name="description" class="form-control">
+                  </textarea>
+                </div>
+                
+              </div>
+
+
+              <br>
+              <button class="btn btn-dark container" mat-dialog-close [disabled]="!userForm.form.valid "
+                type="submit">Add Product</button>
+
+            </form>
+          </div>
+        </article>
+
+      </div>
+    </div>
   </div>
+</div>

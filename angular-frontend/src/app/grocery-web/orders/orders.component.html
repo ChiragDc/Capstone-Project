@@ -1,5 +1,5 @@
 <div
-  *ngIf="(user | json) != '{}' || user.email!='' ; else loggedOut">
+  *ngIf="(user | json) != '{}' || !user.email ; else loggedOut">
 
   <div class="columns" *ngIf="hideDiv">
     <div id="cart-imgs" *ngIf="!paid">

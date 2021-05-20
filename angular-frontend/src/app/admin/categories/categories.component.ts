@@ -6,6 +6,7 @@ import { CategoryService } from 'src/app/service/category.service';
 import { ProductService } from 'src/app/service/product.service';
 import { TagService } from 'src/app/service/tag.service';
 import { UserService } from 'src/app/service/user.service';
+import Swal from 'sweetalert2';
 import { AddCategoryComponent } from '../add-category/add-category.component';
 import { AddProductComponent } from '../add-product/add-product.component';
 import { AddTagToProductComponent } from '../add-tag-to-product/add-tag-to-product.component';
@@ -39,7 +40,7 @@ export class CategoriesComponent implements OnInit {
         this.userService.findByUsername(this.userService.getUsername()).subscribe(user => {
           this.user = user;
         })
-        
+
       }
     )
   }
@@ -58,11 +59,36 @@ export class CategoriesComponent implements OnInit {
     })
   }
   deleteCategory(idCategory: number, idUser: any) {
-    if (confirm("Are you sure")) {
-      this.categoryService.deleteCategory(idCategory).subscribe(() => {
-        window.location.replace(`/profile/${idUser}`)
-      })
-    }
+
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes,Delete it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.categoryService.deleteCategory(idCategory).subscribe(() => {
+          setTimeout(function () {
+            window.location.replace(`/profile/${idUser}`)
+          }, 3000);
+
+
+        })
+        Swal.fire(
+          'Deleted!',
+          'Category has been Removed',
+          'success'
+        )
+      }
+    })
+    
+      // this.categoryService.deleteCategory(idCategory).subscribe(() => {
+      //   window.location.replace(`/profile/${idUser}`)
+      // })
+    
   }
   editCategory(idCategory: any) {
     this.dialog.open(AddCategoryComponent, {
@@ -70,16 +96,42 @@ export class CategoriesComponent implements OnInit {
     })
   }
   deleteProduct(idProduct: number, idUser: any) {
-    if (confirm("Are you sure")) {
-      this.productService.deleteProduct(idProduct).subscribe(() => {
-        window.location.replace(`/profile/${idUser}`)
-      })
-    }
+
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, Delete it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.productService.deleteProduct(idProduct).subscribe(() => {
+          setTimeout(function () {
+            window.location.replace(`/profile/${idUser}`);
+          }, 3000);
+
+
+        })
+        Swal.fire(
+          'Deleted!',
+          'Product has been Removed',
+          'success'
+        )
+      }
+    })
+
+
+
+
   }
+
+
   editProduct(idProduct: any) {
     this.dialog.open(AddProductComponent, {
       data: { idProduct }
     })
   }
- 
+
 }

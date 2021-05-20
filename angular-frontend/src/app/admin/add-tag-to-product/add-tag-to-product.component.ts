@@ -2,6 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Tag } from 'src/app/Model';
 import { TagService } from 'src/app/service/tag.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-add-tag-to-product',
@@ -29,7 +30,11 @@ export class AddTagToProductComponent implements OnInit {
   selectedValue(event: any) {
     const idTag = event.value;
     this.tagService.addTagToProduct(this.data.idProduct, idTag).subscribe(() => {
-      window.location.reload();
+      Swal.fire('Tag Added')
+      setTimeout(function () {
+        window.location.reload();
+      }, 3000);
+      
     })
   }
 }

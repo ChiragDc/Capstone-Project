@@ -2,6 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Product } from 'src/app/Model';
 import { ProductService } from 'src/app/service/product.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-add-product',
@@ -32,7 +33,10 @@ export class AddProductComponent implements OnInit {
     } else {
       this.productService.addProductToCategory(this.product, this.data.idCategory).subscribe(product => {
         this.product = product;
-        window.location.reload();
+        Swal.fire('Product added')
+        setTimeout(function() {
+          location.reload();
+      }, 2000);
       });
     }
   }

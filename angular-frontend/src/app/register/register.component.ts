@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import Swal from 'sweetalert2';
 import { LoginComponent } from '../login/login/login.component';
 import { User } from '../Model';
 import { UserService } from '../service/user.service';
@@ -23,13 +24,15 @@ export class RegisterComponent implements OnInit {
   }
 
   addUser() {
-    this.progressBar = true;
+   
     console.log(this.username)
+    
+    Swal.fire('Registration Complete')
     this.userService.addUser(this.user).subscribe(user => {
       this.user = user;
       this.userService.saveUsername(user.username);
-      // window.location.replace("/")
-      this.dialog.open(LoginComponent);
+      
+     
     });
   }
 

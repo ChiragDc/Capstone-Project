@@ -5,6 +5,7 @@ import { ProductOrders, User } from 'src/app/Model';
 import { OrderService } from 'src/app/service/order.service';
 import { UserService } from 'src/app/service/user.service';
 import { UpdateProfileComponent } from 'src/app/update-profile/update-profile.component';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-orders',
@@ -35,7 +36,7 @@ export class OrdersComponent implements OnInit {
   ngOnInit() {
     this.userService.findByUsername(this.userService.getUsername()).subscribe(user => {
       this.user = user;
-      
+
     })
     this.sub = this.orderService.OrdersChanged.subscribe(() => {
       this.orders = this.orderService.ProductOrders;
@@ -45,10 +46,38 @@ export class OrdersComponent implements OnInit {
   }
 
   pay() {
-    this.paid = true;
-    this.hideDiv = false;
-    this.orderService.saveOrder(this.orders).subscribe();
+
+    let timerInterval: NodeJS.Timeout
+    Swal.fire({
+      title: 'Placing Order...!',
+      html: 'Please Wait',
+      timer: 2500,
+      timerProgressBar: true,
+      didOpen: () => {
+        Swal.showLoading()
+        timerInterval = setInterval(() => {
+          const content = Swal.getHtmlContainer()
+
+        }, 100)
+      },
+      willClose: () => {
+        clearInterval(timerInterval)
+      }
+    }).then((result) => {
+      /* Read more about handling dismissals below */
+      if (result.dismiss === Swal.DismissReason.timer) {
+        console.log('I was closed by the timer')
+
+        this.paid = true;
+        this.hideDiv = false;
+        this.orderService.saveOrder(this.orders).subscribe();
+      }
+    })
+
+
   }
+
+
 
   loadTotal() {
     this.sub = this.orderService.TotalChanged.subscribe(() => {
