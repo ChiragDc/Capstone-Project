@@ -1,12 +1,18 @@
-<div class="container" [hidden]="orderFinished">
-    <div class="row">
-      <div class="col-lg-4">
-        <h2 class="title-page"><i class="fab fa-dropbox"></i> Products <i class="fab fa-dropbox"></i></h2>
-      </div>
+<div class="m-1" [hidden]="orderFinished">
+  <div class="row">
+    <div class="col-lg-4">
+      
+        <mdb-card>
+          <mdb-card-body>
+            Browsing By Category
+          </mdb-card-body>
+        </mdb-card>
+      
     </div>
   </div>
-  <hr>
-  <div class="card-deck" style="padding-bottom: 40px;">
+</div>
+<hr>
+  <!-- <div class="card-deck" style="padding-bottom: 40px;">
     <div class="col-lg-4 col-md-6 mb-4" *ngFor="let product of products let i = index;">
       <div class="card text-center">
         <div class="card-header" style="background-color: #bdc3c7;">
@@ -27,6 +33,39 @@
               <span>{{product.description}}</span>
             </div>
           </div>
+  
+        </div>
+      </div>
+    </div>
+  </div> -->
+
+  <div class="row card-deck">
+
+    <div class="col-lg-4 col-md-6 mb-4" *ngFor="let product of products ">
+      <div class="card">
+        <a (click)="sampleProduct(product.id)"><img class="card-img-top" src="{{product.pictureUrl }}" alt="image" /></a>
+  
+        <div class="card-body text-center">
+  
+  
+  
+  
+          <mdb-card-title>
+            <h4>{{product.name }}</h4>
+          </mdb-card-title>
+          <h5 class="card-title" id="price">
+            From <i class="fas fa-rupee-sign"></i>{{ product.price }}
+            <!-- <button title="Information" id="btn" (click)="showUndoBtn(i)" (click)="productInfo(order.product.id)">
+                <i class="fas fa-info-circle"></i>
+              </button>
+              <button title="View" id="btn" (click)="sampleProduct(order.product.id)">
+                <i class="fas fa-eye-slash"></i>
+              </button> -->
+          </h5>
+  
+  
+  
+  
   
         </div>
       </div>

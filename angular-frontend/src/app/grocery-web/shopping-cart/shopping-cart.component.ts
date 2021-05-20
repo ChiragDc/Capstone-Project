@@ -40,7 +40,7 @@ export class ShoppingCartComponent implements OnInit {
     this.itemsList.forEach((item) => {
       this.onItemChange(item);
     });
-    this.priceDelivery = 1.99;
+    this.priceDelivery = 40;
   }
 
   private calculateTotal(products: ProductOrder[]): number {

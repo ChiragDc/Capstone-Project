@@ -44,7 +44,7 @@
           Browse by Category<span class="caret"></span></a>
         <div *dropdownMenu class="dropdown-menu dropdown dropdown-primary " role="menu">
           <a class="dropdown-item waves-light" *ngFor="let cat of categories"
-            [routerLink]="['/dsiplay-category/', cat.id]" mdbWavesEffect href="#">{{cat.name}}</a>
+            [routerLink]="['/display-category/', cat.id]" mdbWavesEffect href="#">{{cat.name}}</a>
         </div>
       </li>
 
@@ -79,7 +79,7 @@
         </a>
       </li>
 
-      <a type="button" class="nav-link waves-light" *ngIf="user" [routerLink]="['/profile/', user.id]">
+      <a type="button dropdown" class="nav-link waves-light" *ngIf="user" [routerLink]="['/profile/', user.id]">
         <i class="fas fa-user"></i>
       </a>
       <a type="button" class="nav-link waves-light" (click)="login()" *ngIf="!user">
@@ -88,6 +88,9 @@
       <a type="button" class="nav-link waves-light" (click)="register()" *ngIf="!user">
         Register
       </a>
+
+      
+
     </ul>
   </links>
   <!-- Collapsible content -->

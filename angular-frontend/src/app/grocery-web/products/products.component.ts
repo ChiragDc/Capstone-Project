@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { LoginComponent } from 'src/app/login/login/login.component';
-import { Product, ProductOrder, ProductOrders, User } from 'src/app/Model';
+import { Product, ProductOrder, ProductOrders, Tag, User } from 'src/app/Model';
 import { OrderService } from 'src/app/service/order.service';
 import { ProductService } from 'src/app/service/product.service';
+import { TagService } from 'src/app/service/tag.service';
 import { UserService } from 'src/app/service/user.service';
 
 @Component({
@@ -19,6 +20,7 @@ export class ProductsComponent implements OnInit {
   products: Product[] = [];
   selectedProductOrder!: ProductOrder;
   shoppingCartOrders!: ProductOrders;
+  
   sub!: Subscription;
   productSelected = false;
   description: string = '';
@@ -37,7 +39,8 @@ export class ProductsComponent implements OnInit {
     this.productOrders = [];
     this.loadProducts();
     this.loadOrders();
-
+    
+    
   }
 
   addToCart(order: ProductOrder) {

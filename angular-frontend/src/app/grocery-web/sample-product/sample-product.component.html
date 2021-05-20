@@ -1,37 +1,51 @@
-<div class="container" *ngFor="let order of productOrders let i = index;">
+<div class="container" *ngFor="let order of productOrders;">
     <div class="row">
-        <div class="col" [hidden]="orderFinished">
+        <div class="col-6">
 
             <div class="pricing-table">
 
                 <div class="pricing-item pricing-featured">
-                    <div class='selected'>Recommend</div>
-                    <div class="pricing-title">
-                        Product
-                    </div>
-                    <div class="pricing-value">R${{order.product.price}}.<span class="smallText">90</span>
-                    </div>
-                    <ul class="pricing-features">
-                        <li><span class="keywords">Name</span> {{order.product.name}}</li>
-                        <li>Description <br>
-                            <span>
-                                {{order.product.description}}
 
-                            </span>
+                    <!-- <div class="pricing-value">R${{order.product.price}}
+                    </div> -->
+                    <div>
+                        <img class="card-img-top img-thumbnail" style="width: 50%; height: 250px"
+                            src={{order.product.pictureUrl}} alt="image">
+                    </div>
+                    <ul class="pricing-features ">
+                        <li class="font-weight-bold"><span class="keywords">Name:</span> {{order.product.name}}</li>
+                        <li class="font-weight-bold">Description :
+                            <mdb-card-text>
+                                {{ order.product.description }}
+
+                            </mdb-card-text>
                         </li>
-                    </ul>
+                            <ul class="list-group borderless list-group-horizontal ">
+                            <li class="list-group-item text-left border-0 "  *ngFor="let tag of tags"
+                                style="margin-left: 5px; margin-left: 5px; margin-top: 10px; padding: 5px 10px;">
+                                <a [routerLink]="['/display-tag/', tag.id]"
+                                    >  <mdb-badge color="blue">
 
-                    <div class="button" *ngIf="user">
+                                    {{tag.name}}</mdb-badge></a>
+                            </li>
+                        </ul>
+
+
+                    </ul>
+                    <!-- <div *ngIf="!isProductSelected(order.product)">
+                        <input type="hidden" tabindex="0" min="" max="1" class="form-control" [(ngModel)]="order.quantity" />
+                    </div>
+                    <div class="button"  *ngIf="user">
                         <div *ngIf="!isProductSelected(order.product)">
-                            <button id="addToCartBtn" class="btn-block" (click)="addToCart(order,  user.id)">Add To Cart
+                            <button style="padding: -5px;" id="addToCartBtn" class="btn-block" (click)="addToCart(order,  user.id)">Add To Cart
                             </button>
                         </div>
-                        <div *ngIf="isProductSelected(order.product)">
-                            <button class="btn btn-danger btn-block active"
+                        <div *ngIf="isProductSelected(order.product)" >
+                            <button class="btn btn-danger btn-block active "
                                 (click)="removeFromCart(order,  user.id)">Remove From Cart
                             </button>
                         </div>
-                    </div>
+                    </div> -->
 
                     <div *ngIf="!user">
                         <p><strong>Please login to buy product</strong> <button type="button" class="btn btn-link"
@@ -42,7 +56,7 @@
 
 
         </div>
-        <div class="col" [hidden]="orderFinished">
+        <!-- <div class="col" [hidden]="orderFinished">
             <img class="card-img-top img-thumbnail" style="width: 100%; height: 570px" src={{order.product.pictureUrl}}
                 alt="image">
             <div *ngIf="!isProductSelected(order.product)">
@@ -55,8 +69,8 @@
                     <a [routerLink]="['/display-tag/', tag.id]" style="cursor: pointer; color: blue;">{{tag.name}}</a>
                 </li>
             </ul>
-        </div>
-        <div class="col" style="padding-right: 34px;">
+        </div> -->
+        <!-- <div class="col" style="padding-right: 34px;">
             <div style="margin-top: 5px;">
                 <app-shopping-cart (onOrderFinished)=finishOrder($event) #shoppingCartC [hidden]="orderFinished">
                 </app-shopping-cart>
@@ -65,7 +79,7 @@
             <div>
                 <app-orders #ordersC [hidden]="!orderFinished"></app-orders>
             </div>
-        </div>
+        </div> -->
         <hr style="border: 1px solid #ddd;">
     </div>
 </div>

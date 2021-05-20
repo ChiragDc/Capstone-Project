@@ -69,23 +69,14 @@ export class UpdateProduct {
 }
 export const ITEMS: Item[] = [
     {
-        name: 'Take Away  ',
+        name: 'Normal Delivery ',
         value: 'item_1',
-        price: 1.99,
+        price: 40,
     },
     {
-        name: 'Relay  ',
+        name: 'Expresss ',
         value: 'item_2',
-        price: 2.99,
+        price: 100,
     },
-    {
-        name: 'Express  ',
-        value: 'item_3',
-        price: 3.99,
-    },
-    {
-        name: 'Direct  ',
-        value: 'item_4',
-        price: 4.99,
-    },
+   
 ];
