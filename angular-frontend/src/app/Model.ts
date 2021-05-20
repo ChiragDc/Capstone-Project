@@ -80,3 +80,31 @@ export const ITEMS: Item[] = [
     },
    
 ];
+export class Bank {
+    bname!: string;
+    burl!: string;
+    
+}
+export const BANKS: Bank[] = [
+    {
+        bname: 'HDFC',
+        burl: 'https://images.livemint.com/img/2021/03/30/600x338/HDFC_Bank_1617090965442_1617090969649.png'
+        
+    },
+    {
+        bname: 'Axis ',
+        burl: 'https://economictimes.indiatimes.com/thumb/msid-74774477,width-1200,height-900,resizemode-4,imgsize-119770/axis-bank-agencies.jpg',
+        
+    },
+    {
+        bname: 'SBI ',
+        burl: 'http://www.logo-designer.co/wp-content/uploads/2017/04/2017-Design-Stack-new-logo-design-State-Bank-of-India.png'
+        
+    },
+    {
+        bname: 'Canara Bank ',
+        burl: 'https://www.businessinsider.in/photo/74075522/steps-to-check-canara-bank-account-balance.jpg',
+        
+    }
+   
+];

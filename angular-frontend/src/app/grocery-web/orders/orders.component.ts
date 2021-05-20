@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Subscription } from 'rxjs';
-import { ProductOrders, User } from 'src/app/Model';
+import { Bank, BANKS, ProductOrders, User } from 'src/app/Model';
 import { OrderService } from 'src/app/service/order.service';
 import { UserService } from 'src/app/service/user.service';
 import { UpdateProfileComponent } from 'src/app/update-profile/update-profile.component';
@@ -28,6 +28,11 @@ export class OrdersComponent implements OnInit {
   hideDiv = true;
   newDate!: Date;
   hideItem!: boolean;
+  bankList: Bank[] = BANKS;
+  bname!: string;
+  burl!: string;
+  selectedOption!: string;
+  printedOption!: string;
 
   constructor(private orderService: OrderService, private userService: UserService, private dialog: MatDialog) {
     this.orders = this.orderService.ProductOrders;
@@ -46,6 +51,7 @@ export class OrdersComponent implements OnInit {
   }
 
   pay() {
+    console.log(this.selectedOption);
 
     let timerInterval: NodeJS.Timeout
     Swal.fire({
@@ -64,6 +70,14 @@ export class OrdersComponent implements OnInit {
         clearInterval(timerInterval)
       }
     }).then((result) => {
+      Swal.fire({
+        title: 'Done',
+        html: '<p>Thank you for Shopping With us</p>',
+        imageUrl: this.selectedOption,
+        imageWidth: 400,
+        imageHeight: 200,
+        imageAlt: 'Custom image',
+      })
       /* Read more about handling dismissals below */
       if (result.dismiss === Swal.DismissReason.timer) {
         console.log('I was closed by the timer')
