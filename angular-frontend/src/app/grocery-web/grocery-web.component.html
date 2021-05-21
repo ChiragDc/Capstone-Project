@@ -11,7 +11,13 @@
 <div class="jumbotron jumbotron-fluid row " [hidden]="orderFinished">
   <div class="container ">
     <h1 class="display-4 text-center">CAPSTONE GROCERY</h1>
-    </div>
+  </div>
+</div>
+<div class="col-lg-8">
+  <div class="input-group mb-3 ml-5" style="margin-top: 15px;">
+    <input type="text" class="form-control" placeholder="Search Product" name="name" [(ngModel)]="name">
+    <button class="btn btn-dark" type="button" (click)="search()"><i class="fas fa-search"></i></button>
+  </div>
 </div>
 
 <div class="row" style="padding-bottom: 40px;" *ngIf="!showSearch">
@@ -28,7 +34,7 @@
   </div>
 </div>
 
-<div *ngIf="showSearch">
+<!-- <div *ngIf="showSearch">
   <div class="card-deck" style="padding-bottom: 40px;">
     <div class="col-lg-4 col-md-6 mb-4" *ngFor="let product of products let i = index;">
       <div class="card text-center">
@@ -50,6 +56,37 @@
               <span>{{product.description}}</span>
             </div>
           </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+<div *ngIf="showSearch">
+  <div class="row card-deck">
+
+    <div class="col-lg-4 col-md-6 mb-4" *ngFor="let product of products ">
+      <div class="card">
+        <a (click)="sampleProduct(product.id)"><img class="card-img-top" src="{{product.pictureUrl }}"
+            alt="image" /></a>
+
+        <div class="card-body text-center">
+
+
+
+
+          <mdb-card-title>
+            <h4>{{product.name }}</h4>
+          </mdb-card-title>
+          <h5 class="card-title" id="price">
+            From <i class="fas fa-rupee-sign"></i>{{ product.price }}
+
+          </h5>
+
+
+
+
 
         </div>
       </div>
