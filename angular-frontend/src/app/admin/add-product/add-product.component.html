@@ -45,7 +45,7 @@
                 <label>Name</label>
                 <div class="input-group mb-3">
                   <div class="input-group-prepend">
-                    <span class="input-group-text bg-dark text-light"><i class="fas fa-address-card"></i></span>
+                    <span class="input-group-text bg-dark text-light"><i class="fas fa-apple-alt"></i></span>
                   </div>
                   <input type="text" class="form-control" required #name="ngModel" id="name" [(ngModel)]="product.name"
                     name="name" [class.is-invalid]="name.touched && name.invalid">
@@ -60,7 +60,7 @@
                 <label> Price in Rs</label>
                 <div class="input-group mb-3">
                   <div class="input-group-prepend">
-                    <span class="input-group-text bg-dark text-light"><i class="fas fa-address-card"></i></span>
+                    <span class="input-group-text bg-dark text-light"><i class="fas fa-rupee-sign"></i></span>
                   </div>
                   <input type="number" class="form-control" required #price="ngModel"
                     [class.is-invalid]="price.touched && price.invalid" id="price" [(ngModel)]="product.price"
@@ -74,7 +74,7 @@
                 <label> Picture Link</label>
                 <div class="input-group mb-3">
                   <div class="input-group-prepend">
-                    <span class="input-group-text bg-dark text-light"><i class="far fa-envelope"></i></span>
+                    <span class="input-group-text bg-dark text-light"><i class="fas fa-image"></i></span>
                   </div>
                   <input type="text"  #pictureUrl="ngModel"
                     id="pictureUrl"

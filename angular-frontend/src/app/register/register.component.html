@@ -37,7 +37,7 @@
                 <label>Username</label>
                 <div class="input-group mb-3">
                   <div class="input-group-prepend">
-                    <span class="input-group-text bg-dark text-light"><i class="fas fa-address-card"></i></span>
+                    <span class="input-group-text bg-dark text-light"><i class="fas fa-user"></i></span>
                   </div>
                   <input type="text" class="form-control" minlength="4" required #username="ngModel" id="username"
                     [(ngModel)]="user.username" name="username"
@@ -54,7 +54,7 @@
                 <label> Email</label>
                 <div class="input-group mb-3">
                   <div class="input-group-prepend">
-                    <span class="input-group-text bg-dark text-light"><i class="fas fa-address-card"></i></span>
+                    <span class="input-group-text bg-dark text-light"><i class="far fa-envelope"></i></span>
                   </div>
                   <input type="text" class="form-control" required #email="ngModel"
                     [class.is-invalid]="email.touched && email.invalid" id="email" [(ngModel)]="user.email"
@@ -68,7 +68,7 @@
                 <label> Password</label>
                 <div class="input-group mb-3">
                   <div class="input-group-prepend">
-                    <span class="input-group-text bg-dark text-light"><i class="far fa-envelope"></i></span>
+                    <span class="input-group-text bg-dark text-light"><i class="fas fa-key"></i></span>
                   </div>
                   <input type="password" required #password="ngModel"
                     [class.is-invalid]="password.touched && password.invalid" id="password" [(ngModel)]="user.password"

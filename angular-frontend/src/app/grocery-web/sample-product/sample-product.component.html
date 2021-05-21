@@ -20,13 +20,14 @@
 
                             </mdb-card-text>
                         </li>
-                            <ul class="list-group borderless list-group-horizontal ">
-                            <li class="list-group-item text-left border-0 "  *ngFor="let tag of tags"
+                        <ul class="list-group borderless list-group-horizontal ">
+                            <li class="list-group-item text-left border-0 " *ngFor="let tag of tags"
                                 style="margin-left: 5px; margin-left: 5px; margin-top: 10px; padding: 5px 10px;">
-                                <a [routerLink]="['/display-tag/', tag.id]"
-                                    >  <mdb-badge color="blue">
+                                <a [routerLink]="['/display-tag/', tag.id]">
+                                    <mdb-badge color="blue">
 
-                                    {{tag.name}}</mdb-badge></a>
+                                        <i class="fas fa-tag pr-1"></i> {{tag.name}}</mdb-badge>
+                                </a>
                             </li>
                         </ul>
 

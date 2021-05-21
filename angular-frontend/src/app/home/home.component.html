@@ -44,7 +44,7 @@
           Browse by Category<span class="caret"></span></a>
         <div *dropdownMenu class="dropdown-menu dropdown dropdown-primary " role="menu">
           <a class="dropdown-item waves-light" *ngFor="let cat of categories"
-            [routerLink]="['/display-category/', cat.id]" mdbWavesEffect href="#">{{cat.name}}</a>
+            [routerLink]="['/display-category/', cat.id]" mdbWavesEffect href="#"><i class="fas fa-shopping-bag pr-2"></i>{{cat.name}}</a>
         </div>
       </li>
 
@@ -53,11 +53,10 @@
         <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
           Follow us on<span class="caret"></span></a>
         <div *dropdownMenu class="dropdown-menu dropdown dropdown-primary" role="menu">
-          <a class="dropdown-item waves-light" mdbWavesEffect href="#">Action</a>
-          <a class="dropdown-item waves-light" mdbWavesEffect href="#">Another action</a>
-          <a class="dropdown-item waves-light" mdbWavesEffect href="#">Something else here</a>
-          <div class="divider dropdown-divider"></div>
-          <a class="dropdown-item waves-light" mdbWavesEffect href="#">Separated link</a>
+          <a class="dropdown-item waves-light" mdbWavesEffect href="#"><i class="fab fa-twitter pr-2"></i>Twitter</a>
+          <a class="dropdown-item waves-light" mdbWavesEffect href="#"><i class="fab fa-facebook-square pr-2"></i>Facebook</a>
+          <a class="dropdown-item waves-light" mdbWavesEffect href="#"><i class="fab fa-reddit-square pr-2"></i>Reddit</a>
+
         </div>
       </li>
 

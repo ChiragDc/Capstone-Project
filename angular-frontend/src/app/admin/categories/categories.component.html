@@ -46,7 +46,7 @@
                   </mat-expansion-panel-header>
                   <mat-chip-list class="example-chip" cdkDropList cdkDropListOrientation="horizontal">
                     <mat-chip class="example-box" cdkDrag *ngFor="let tag of tags">
-                      {{tag.name}}
+                      <i class="fas fa-tag pr-1"></i> {{tag.name}}
                     </mat-chip>
                   </mat-chip-list>
                 </mat-expansion-panel>
