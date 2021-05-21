@@ -30,7 +30,7 @@
     </mat-form-field>
     
     
-    <p role="alert" class="alert alert-danger" *ngIf="!paid">Total amount: Rs.{{ total }} (Includes Delivery Charges)
+    <p role="alert" class="bg-defaultr" *ngIf="!paid"><strong>Total amount: Rs.{{ total }} (Includes Delivery Charges)</strong> 
     </p>
     <button class="btn btn-dark btn-block" (click)="pay()" *ngIf="!paid">Pay</button>
   </div>
