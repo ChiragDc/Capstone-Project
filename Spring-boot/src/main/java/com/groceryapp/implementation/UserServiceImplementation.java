@@ -15,28 +15,28 @@ import com.groceryapp.service.UserService;
 
 @Transactional
 @Component
-public class UserServiceImplementation implements UserService{
-	
+public class UserServiceImplementation implements UserService {
+
 	@Autowired
 	private UserDao userDao;
-	
+
 	@Override
 	public User addUser(User user) {
 		List<User> users = userDao.findAll();
-	    if (users.size() == 0) {
-	     user.setAdmin(true);
-	   }
-			
-	   for (User existUser : users) {
-		   
-	    if (user.getUsername().equals(existUser.getUsername())) {
-	     existUser.setUsername(existUser.getUsername());
-	     existUser.setPassword(existUser.getPassword());
-	     return userDao.save(existUser);
-	      }
-	     }
-		
-	   return userDao.save(user);
+		if (users.size() == 0) {
+			user.setAdmin(true);
+		}
+
+		for (User existUser : users) {
+
+			if (user.getUsername().equals(existUser.getUsername())) {
+				existUser.setUsername(existUser.getUsername());
+				existUser.setPassword(existUser.getPassword());
+				return userDao.save(existUser);
+			}
+		}
+
+		return userDao.save(user);
 	}
 
 	@Override
@@ -49,11 +49,11 @@ public class UserServiceImplementation implements UserService{
 	public User editUser(User user, long id) {
 		// TODO Auto-generated method stub
 		User existUser = userDao.findById(id).orElse(null);
-	    existUser.setUsername(user.getUsername());
-	    existUser.setPassword(user.getPassword());
-	    existUser.setAdmin(user.isAdmin());
-	    existUser.setEmail(user.getEmail());
-	    return userDao.save(existUser);
+		existUser.setUsername(user.getUsername());
+		existUser.setPassword(user.getPassword());
+		existUser.setAdmin(user.isAdmin());
+		existUser.setEmail(user.getEmail());
+		return userDao.save(existUser);
 	}
 
 	@Override
@@ -64,33 +64,45 @@ public class UserServiceImplementation implements UserService{
 
 	@Override
 	public void deleteUser(long id) {
-		 userDao.deleteById(id);
-		
+		userDao.deleteById(id);
+
 	}
 
 	@Override
 	public User findByUsername(String username) {
 		// TODO Auto-generated method stub
-		 Optional<User> users = userDao.findByUsername(username);
-		    if (users.isPresent()) {
-		     User user = users.get();
-		     return user;
-		    }
-		     return null;
-		 }
+		Optional<User> users = userDao.findByUsername(username);
+		if (users.isPresent()) {
+			User user = users.get();
+			return user;
+		}
+		return null;
+	}
 
 	@Override
 	public Status loginUser(User user) {
 		// TODO Auto-generated method stub
 		List<User> users = userDao.findAll();
-        for (User other : users) {
-            if (other.equals(user)) {
-                
-            	
-                return Status.SUCCESS;
-            }
-        }
-        return Status.FAILURE;
+		for (User other : users) {
+			if (other.equals(user)) {
+
+				return Status.SUCCESS;
+			}
+		}
+		return Status.FAILURE;
 	}
 
+	@Override
+	public boolean checkUser(User user) {
+		boolean check = false;
+		List<User> users = userDao.findAll();
+		for (User other : users) {
+			if (other.equals(user))
+				check = true;
+
+//		
+		}
+		return check;
+
+	}
 }

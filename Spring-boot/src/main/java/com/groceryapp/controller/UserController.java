@@ -67,10 +67,14 @@ public class UserController {
 		return userService.findByUsername(username);
 	}
 	
+//	@PostMapping("/login")
+//    public Status loginUser(@Valid @RequestBody User user) {
+//
+//		return userService.loginUser(user);
+//    }
 	@PostMapping("/login")
-    public Status loginUser(@Valid @RequestBody User user) {
+    public boolean checkUser(@Valid @RequestBody User user) {
 
-		return userService.loginUser(user);
+		return userService.checkUser(user);
     }
-	
 }

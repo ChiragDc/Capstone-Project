@@ -20,6 +20,10 @@
 
                             </mdb-card-text>
                         </li>
+                        <li>
+                            <h6 class="card-title" id="price">
+                                Price = {{ order.product.price }}<i class="fas fa-rupee-sign"></i></h6>
+                        </li>
                         <ul class="list-group borderless list-group-horizontal ">
                             <li class="list-group-item text-left border-0 " *ngFor="let tag of tags"
                                 style="margin-left: 5px; margin-left: 5px; margin-top: 10px; padding: 5px 10px;">
@@ -33,6 +37,7 @@
 
 
                     </ul>
+                    
                     <!-- <div *ngIf="!isProductSelected(order.product)">
                         <input type="hidden" tabindex="0" min="" max="1" class="form-control" [(ngModel)]="order.quantity" />
                     </div>

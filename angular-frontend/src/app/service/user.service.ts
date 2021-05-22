@@ -31,6 +31,9 @@ export class UserService {
   findByUsername(username: string): Observable<any> {
     return  this.http.get<any>(`http://localhost:8080/api/findByUsername/${username}`);
   }
+  checkUser(user: User): Observable<User> {
+    return this.http.post<User>('http://localhost:8080/api/login', user);
+  }
 
   saveUsername(username: string) {
     window.sessionStorage.removeItem(USERNAME_KEY);

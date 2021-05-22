@@ -15,5 +15,6 @@ public interface UserService {
 		void deleteUser(long id);
 		User findByUsername(String username);
 		Status loginUser(User user);
+		boolean checkUser(User user);
 		
 }
