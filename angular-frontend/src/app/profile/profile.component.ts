@@ -49,7 +49,7 @@ export class ProfileComponent implements OnInit {
   logout(id: number) {
     window.location.replace("/dashboard");
     this.userService.signOut();
-    this.localStorageService.setItem('visit','')
+     this.localStorageService.setItem('visit','')
   }
   addCategory(idUser: number) {
     this.dialog.open(AddCategoryComponent, {
