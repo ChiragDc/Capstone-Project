@@ -1,19 +1,11 @@
-<!-- <div class="container" [hidden]="orderFinished">
-  <div class="row">
-    <div class="col-lg-4">
-      <h2 class="title-page"><i class="fab fa-dropbox"></i> Products <i class="fab fa-dropbox"></i></h2>
-    </div>
-    <div class="col-lg-8">
-
-    </div>
-  </div>
-</div> -->
-<div class="jumbotron jumbotron-fluid row " [hidden]="orderFinished">
+<div class="jumbotron jumbotron-fluid row " [hidden]="orderFinished" style="background-image:url('https://t4.ftcdn.net/jpg/02/47/80/13/360_F_247801355_e6RslSvRLWclwWCZZmaipsteEEJrXrw1.jpg');
+background-size: cover
+;">
   <div class="container ">
-    <h1 class="display-4 text-center">CAPSTONE GROCERY</h1>
+    <h1 class="display-4 text-center font-weight-bold text-dark">CAPSTONE GROCERY</h1>
   </div>
 </div>
-<div class="col-lg-8">
+<div class="col-lg-8 " [hidden]="orderFinished">
   <div class="input-group mb-3 ml-5" style="margin-top: 15px;">
     <input type="text" class="form-control" placeholder="Search Product" name="name" [(ngModel)]="name">
     <button class="btn btn-dark" type="button" (click)="search()"><i class="fas fa-search"></i></button>
@@ -21,7 +13,8 @@
 </div>
 
 <div class="row" style="padding-bottom: 40px;" *ngIf="!showSearch">
-  <div class="col-md-9">
+  <div class="col-md-9 ">
+    
     <app-products #productsC [hidden]="orderFinished"></app-products>
   </div>
   <div class="col-md-3">
@@ -34,36 +27,9 @@
   </div>
 </div>
 
-<!-- <div *ngIf="showSearch">
-  <div class="card-deck" style="padding-bottom: 40px;">
-    <div class="col-lg-4 col-md-6 mb-4" *ngFor="let product of products let i = index;">
-      <div class="card text-center">
-        <div class="card-header" style="background-color: #bdc3c7;">
-          <h4>{{product.name}}</h4>
-        </div>
 
-        <div class="card-body">
-          <a (click)="sampleProduct(product.id)"><img class="card-img-top img-thumbnail"
-              style="width: 230px; height: 300px; cursor: pointer;" src={{product.pictureUrl}} alt="image"></a>
-          <h5 class="card-title" id="price">Price = {{product.price}}<i class="fas fa-dollar-sign"></i>
-            <button title="Information" id="btn" (click)=showUndoBtn(i) (click)="productInfo(product.id)">
-              <i class="fas fa-info-circle"></i></button>
-            <button title="View" id="btn" (click)="sampleProduct(product.id)"> <i class="fas fa-eye-slash"></i></button>
-          </h5>
-          <div class="modal" [attr.id]="'undoBtn'+i" *ngIf="showBtn===i && showMyContainerInfo" class="editBtn"
-            md-raised-button color="primary">
-            <div class="modal-content">
-              <span>{{product.description}}</span>
-            </div>
-          </div>
 
-        </div>
-      </div>
-    </div>
-  </div>
-</div> -->
-
-<div *ngIf="showSearch">
+<div *ngIf="showSearch" >
   <div class="row card-deck">
 
     <div class="col-lg-4 col-md-6 mb-4" *ngFor="let product of products ">
@@ -93,3 +59,4 @@
     </div>
   </div>
 </div>
+<app-footer></app-footer>

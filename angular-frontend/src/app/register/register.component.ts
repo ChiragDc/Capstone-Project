@@ -47,8 +47,8 @@ export class RegisterComponent implements OnInit {
         console.log('hello')
       },
       ()=>{
-        this.user = this.user;
-      this.userService.saveUsername(this.user.username);
+      //   this.user = this.user;
+      // this.userService.saveUsername(this.user.username);
       Swal.fire('Registration Complete')
       }
     )

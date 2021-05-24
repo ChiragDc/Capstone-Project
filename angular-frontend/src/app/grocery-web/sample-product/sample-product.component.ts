@@ -64,36 +64,51 @@ export class SampleProductComponent implements OnInit {
     })
   }
 
-  addToCart(order: ProductOrder, idUser: number) {
+  // addToCart(order: ProductOrder, idUser: number) {
+  //   this.orderService.SelectedProductOrder = order;
+  //   this.selectedProductOrder = this.orderService.SelectedProductOrder;
+  //   this.productSelected = true;
+  //   this.cart.name = order.product.name;
+  //   this.cart.price = order.product.price;
+  //   this.cart.quantity = order.quantity;
+  //   this.cart.pictureUrl = order.product.pictureUrl;
+  //   this.cartService.addCartToUser(this.cart, idUser).subscribe(cart => {
+  //     this.cart = cart;
+  //     this.cartService.saveCartName(this.cart.name);
+  //   })
+  // }
+  addToCart(order: ProductOrder) {
     this.orderService.SelectedProductOrder = order;
     this.selectedProductOrder = this.orderService.SelectedProductOrder;
     this.productSelected = true;
-    this.cart.name = order.product.name;
-    this.cart.price = order.product.price;
-    this.cart.quantity = order.quantity;
-    this.cart.pictureUrl = order.product.pictureUrl;
-    this.cartService.addCartToUser(this.cart, idUser).subscribe(cart => {
-      this.cart = cart;
-      this.cartService.saveCartName(this.cart.name);
-    })
   }
-
-  removeFromCart(productOrder: ProductOrder, idUser: number) {
+  removeFromCart(productOrder: ProductOrder) {
     let index = this.getProductIndex(productOrder.product);
     if (index > -1) {
       this.shoppingCartOrders.productOrders.splice(
         this.getProductIndex(productOrder.product), 1);
-      const name = this.cartService.getCartName();
-      this.cartService.findCartsForUser(idUser).subscribe(carts => {
-        this.cartExist = carts.filter(item => item.name === name)[0];
-        this.cartService.removeFromCart(this.cartExist.id, idUser).subscribe(() => {
-        })
-      })
     }
     this.orderService.ProductOrders = this.shoppingCartOrders;
     this.shoppingCartOrders = this.orderService.ProductOrders;
     this.productSelected = false;
   }
+
+  // removeFromCart(productOrder: ProductOrder, idUser: number) {
+  //   let index = this.getProductIndex(productOrder.product);
+  //   if (index > -1) {
+  //     this.shoppingCartOrders.productOrders.splice(
+  //       this.getProductIndex(productOrder.product), 1);
+  //     const name = this.cartService.getCartName();
+  //     this.cartService.findCartsForUser(idUser).subscribe(carts => {
+  //       this.cartExist = carts.filter(item => item.name === name)[0];
+  //       this.cartService.removeFromCart(this.cartExist.id, idUser).subscribe(() => {
+  //       })
+  //     })
+  //   }
+  //   this.orderService.ProductOrders = this.shoppingCartOrders;
+  //   this.shoppingCartOrders = this.orderService.ProductOrders;
+  //   this.productSelected = false;
+  // }
 
   getProductIndex(product: Product): number {
     return this.orderService.ProductOrders.productOrders.findIndex(

@@ -48,7 +48,7 @@ export class LoginComponent implements OnInit {
                 icon: 'error',
                 title: 'Oops...',
                 text: 'Invalid Username or Password',
-                // footer: '<a href>Why do I have this issue?</a>'
+                footer: '<a href>Please Login Again with valid Credentials</a>'
               })
             }
         },

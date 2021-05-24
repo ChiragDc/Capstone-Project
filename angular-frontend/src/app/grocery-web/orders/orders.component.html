@@ -1,18 +1,7 @@
 <div  *ngIf="(user | json) != '{}' || !user.email ; else loggedOut">
 
-  <div class="columns" *ngIf="hideDiv">
-    <!-- <div id="cart-imgs" *ngIf="!paid">
-      <div>
-        <a> <img class="img-thumbnail"
-            src="http://www.pret-pas-cher.fr/wp-content/uploads/2015/01/carte-mastercard.png">
-        </a>
-      </div>
-      <div>
-        <a><img class="img-thumbnail"
-            src="https://www.techno-finance.fr/wp-content/uploads/2018/10/2000px-Visa_Electron.svg.png">
-        </a>
-      </div>
-    </div> -->
+  <div class="columns" style="background-color: white;" *ngIf="hideDiv">
+  
     <h2 class="text-center" *ngIf="!paid" role="alert" class="alert alert-dark text-light bg-dark">Confirm Order</h2>
     <ul *ngIf="!paid" id="bill">
       <li *ngFor="let order of orders.productOrders">

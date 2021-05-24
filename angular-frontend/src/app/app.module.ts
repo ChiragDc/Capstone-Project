@@ -27,6 +27,7 @@ import { SampleProductComponent } from './grocery-web/sample-product/sample-prod
 import { ShoppingCartComponent } from './grocery-web/shopping-cart/shopping-cart.component'
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { RegisterComponent } from './register/register.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { RegisterComponent } from './register/register.component';
     ProductsComponent,
     SampleProductComponent,
     ShoppingCartComponent,
-    RegisterComponent
+    RegisterComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

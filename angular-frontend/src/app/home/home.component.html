@@ -1,26 +1,4 @@
-<!-- <div class="toolbar" role="banner">
-    <i class="fas fa-shopping-cart"></i>
-    <span [routerLink]="['/dashboard']">Welcome to your eccommerce</span>
-    <button mat-button [matMenuTriggerFor]="menu">Menu <i class="fas fa-caret-down"></i></button>
-    <mat-menu #menu="matMenu">
-      <button mat-menu-item *ngFor="let cat of categories"
-        [routerLink]="['/dsiplay-category/', cat.id]">{{cat.name}}</button>
-    </mat-menu>
-  
-    <div class="spacer"></div>
-    <a type="button" [routerLink]="['/dashboard']">
-      Home <i class="fas fa-home"></i>
-    </a>
-    <a type="button" *ngIf="user" [routerLink]="['/profile/', user.id]">
-      Profile <i class="fas fa-user"></i>
-    </a>
-    <a type="button" (click)="login()" *ngIf="!user">
-      Login
-    </a>
-    <a type="button" (click)="register()" *ngIf="!user">
-      Register
-    </a>
-  </div><br> -->
+
 
 <!--Navbar-->
 <mdb-navbar SideClass="navbar navbar-expand-lg bg-dark  sticky-top" [containerInside]="false">
