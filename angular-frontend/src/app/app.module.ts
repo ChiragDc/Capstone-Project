@@ -28,6 +28,7 @@ import { ShoppingCartComponent } from './grocery-web/shopping-cart/shopping-cart
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { RegisterComponent } from './register/register.component';
 import { FooterComponent } from './footer/footer.component';
+import { OverlayComponent } from './overlay/overlay.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { FooterComponent } from './footer/footer.component';
     SampleProductComponent,
     ShoppingCartComponent,
     RegisterComponent,
-    FooterComponent
+    FooterComponent,
+    OverlayComponent
   ],
   imports: [
     BrowserModule,

@@ -20,7 +20,7 @@ export class ProductsComponent implements OnInit {
   products: Product[] = [];
   selectedProductOrder!: ProductOrder;
   shoppingCartOrders!: ProductOrders;
-  
+
   sub!: Subscription;
   productSelected = false;
   description: string = '';
@@ -30,17 +30,17 @@ export class ProductsComponent implements OnInit {
 
   constructor(private orderService: OrderService, private router: Router, private dialog: MatDialog,
     private productService: ProductService, private userService: UserService) {
-      this.userService.findByUsername(this.userService.getUsername()).subscribe(user => {
-        this.user = user;
-      });
+    this.userService.findByUsername(this.userService.getUsername()).subscribe(user => {
+      this.user = user;
+    });
   }
 
   ngOnInit() {
     this.productOrders = [];
     this.loadProducts();
     this.loadOrders();
-    
-    
+
+
   }
 
   addToCart(order: ProductOrder) {

@@ -12,8 +12,7 @@
     <!-- Links -->
     <ul class="navbar-nav mr-auto text-light">
       <li class="nav-item active">
-        <a class="nav-link waves-light" [routerLink]="['/dashboard']" mdbWavesEffect>Home<span
-            class="sr-only">(current)</span></a>
+        <a class="nav-link waves-light" [routerLink]="['/dashboard']" mdbWavesEffect>Home</a>
       </li>
       <li class="nav-item dropdown" dropdown>
 
@@ -56,10 +55,10 @@
         </a>
       </li>
 
-      <a type="button dropdown" class="nav-link waves-light" *ngIf="user" [routerLink]="['/profile/', user.id]">
+      <a type="button dropdown " class="nav-link waves-light" *ngIf="user" [routerLink]="['/profile/', user.id]">
         <i class="fas fa-user"></i>
       </a>
-      <a type="button" class="nav-link waves-light" (click)="login()" *ngIf="!user">
+      <a type="button" class="nav-link waves-light " (click)="login()" *ngIf="!user">
         Login
       </a>
       <a type="button" class="nav-link waves-light" (click)="register()" *ngIf="!user">
@@ -77,3 +76,4 @@
 
 
 <router-outlet></router-outlet>
+<!-- <app-footer ></app-footer> -->

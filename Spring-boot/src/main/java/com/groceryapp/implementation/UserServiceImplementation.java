@@ -100,7 +100,7 @@ public class UserServiceImplementation implements UserService {
 			if (other.equals(user))
 				check = true;
 
-//		
+			//		
 		}
 		return check;
 

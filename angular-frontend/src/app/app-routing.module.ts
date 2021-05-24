@@ -1,3 +1,4 @@
+import { Overlay } from '@angular/cdk/overlay';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CategoriesComponent } from './admin/categories/categories.component';
@@ -5,6 +6,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { DisplayCategoryComponent } from './display-category/display-category.component';
 import { DisplayTagComponent } from './display-tag/display-tag.component';
 import { SampleProductComponent } from './grocery-web/sample-product/sample-product.component';
+import { OverlayComponent } from './overlay/overlay.component';
 import { ProfileComponent } from './profile/profile.component';
 
 const routes: Routes = [
@@ -12,6 +14,10 @@ const routes: Routes = [
   {
     path: 'dashboard',
     component: DashboardComponent,
+  },
+  {
+    path:'overlay',
+    component:OverlayComponent,
   },
   {
     path: 'sample/product/:idProduct',

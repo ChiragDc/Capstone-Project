@@ -4,11 +4,13 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 const USERNAME_KEY = 'USERNAME';
+const status='firstVisit';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserService {
+  
   constructor(private http: HttpClient) {}
 
   addUser(user: User): Observable<User> {
@@ -39,6 +41,7 @@ export class UserService {
     window.sessionStorage.removeItem(USERNAME_KEY);
     window.sessionStorage.setItem(USERNAME_KEY, username);
   }
+  
 
   getUsername(): string {
     return sessionStorage.getItem(USERNAME_KEY)!;

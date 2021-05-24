@@ -20,7 +20,7 @@ export class HomeComponent implements OnInit {
     this.userService.findByUsername(userService.getUsername()).subscribe(user => {
       this.user = user;
     })
-   }
+  }
 
   ngOnInit(): void {
     this.categoryService.findAllCategories().subscribe(categories => {
@@ -31,7 +31,7 @@ export class HomeComponent implements OnInit {
   login() {
     this.dialog.open(LoginComponent);
   }
-  register(){
-    this.dialog.open(RegisterComponent);  
+  register() {
+    this.dialog.open(RegisterComponent);
   }
 }
