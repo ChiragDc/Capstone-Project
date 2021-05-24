@@ -29,6 +29,7 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { RegisterComponent } from './register/register.component';
 import { FooterComponent } from './footer/footer.component';
 import { OverlayComponent } from './overlay/overlay.component';
+import { NgDialogAnimationService } from 'ng-dialog-animation';
 
 @NgModule({
   declarations: [
@@ -64,7 +65,7 @@ import { OverlayComponent } from './overlay/overlay.component';
     HttpClientModule,
     MDBBootstrapModule.forRoot()
   ],
-  providers: [],
+  providers: [NgDialogAnimationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

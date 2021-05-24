@@ -3,11 +3,13 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dial
 import { Router } from '@angular/router';
 import { timeout } from 'rxjs/operators';
 import { HomeComponent } from '../home/home.component';
+import { NgDialogAnimationService } from "ng-dialog-animation";
 
 @Component({
   selector: 'app-overlay',
   templateUrl: './overlay.component.html',
-  styleUrls: ['./overlay.component.css']
+  styleUrls: ['./overlay.component.css'],
+  
 })
 export class OverlayComponent implements OnInit {
 

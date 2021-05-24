@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AddCategoryComponent } from '../admin/add-category/add-category.component';
 import { AddProductComponent } from '../admin/add-product/add-product.component';
 import { AddTagComponent } from '../admin/add-tag/add-tag.component';
+import { LocalStorageService } from '../local-storage';
 import { User, Category, Cart } from '../Model';
 import { CartService } from '../service/cart.service';
 import { CategoryService } from '../service/category.service';
@@ -23,7 +24,8 @@ export class ProfileComponent implements OnInit {
   cartLength = 0;
 
   constructor(private userService: UserService, private route: ActivatedRoute, private dialog: MatDialog,
-    private categoryService: CategoryService, private cartService: CartService, private router: Router) {
+    private categoryService: CategoryService, private cartService: CartService, private router: Router,
+    private localStorageService: LocalStorageService) {
 
     this.route.params.subscribe(
       params => {
@@ -47,6 +49,7 @@ export class ProfileComponent implements OnInit {
   logout(id: number) {
     window.location.replace("/dashboard");
     this.userService.signOut();
+    this.localStorageService.setItem('visit','')
   }
   addCategory(idUser: number) {
     this.dialog.open(AddCategoryComponent, {
