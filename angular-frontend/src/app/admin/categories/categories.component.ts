@@ -53,6 +53,9 @@ export class CategoriesComponent implements OnInit {
       data: { idProduct }
     })
   }
+  deleteTag(idProduct: any) {
+
+  }
   showTags(idProduct: number) {
     this.tagService.findTagsForProduct(idProduct).subscribe(tags => {
       this.tags = tags;
@@ -84,11 +87,11 @@ export class CategoriesComponent implements OnInit {
         )
       }
     })
-    
-      // this.categoryService.deleteCategory(idCategory).subscribe(() => {
-      //   window.location.replace(`/profile/${idUser}`)
-      // })
-    
+
+    // this.categoryService.deleteCategory(idCategory).subscribe(() => {
+    //   window.location.replace(`/profile/${idUser}`)
+    // })
+
   }
   editCategory(idCategory: any) {
     this.dialog.open(AddCategoryComponent, {

@@ -3,7 +3,6 @@ package com.groceryapp.service;
 import java.util.List;
 
 
-import com.groceryapp.entities.Status;
 import com.groceryapp.entities.User;
 
 public interface UserService {
@@ -14,7 +13,6 @@ public interface UserService {
 		User findUserById(long id);
 		void deleteUser(long id);
 		User findByUsername(String username);
-		Status loginUser(User user);
 		boolean checkUser(User user);
 		
 }

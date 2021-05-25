@@ -4,7 +4,7 @@ import { User } from '../Model';
 import { OverlayComponent } from '../overlay/overlay.component';
 import { UserService } from '../service/user.service';
 import { NgDialogAnimationService } from 'ng-dialog-animation';
-import { LocalStorageService } from '../local-storage';
+
 
 
 @Component({
@@ -16,15 +16,14 @@ import { LocalStorageService } from '../local-storage';
 export class DashboardComponent implements OnInit {
   user: User = new User();
   flag = true;
-  constructor(public dialog:NgDialogAnimationService, private userServiece: UserService,
-    private localStorageService: LocalStorageService) {
+  constructor(public dialog:NgDialogAnimationService, private userServiece: UserService,) {
 
   }
 
 
   ngOnInit(): void {
-    
-    if(this.localStorageService.getItem('visit')==''){
+    console.log(this.userServiece.getItem('visit'))
+    if(this.userServiece.getItem('visit')==''){
     let dialogRef = this.dialog.open(OverlayComponent, {
       width: window.innerWidth + 'px',
       height: window.innerHeight + 'px',
@@ -35,7 +34,7 @@ export class DashboardComponent implements OnInit {
       
 
     });}
-    this.localStorageService.setItem('visit','notfirst')
+    this.userServiece.setItem('visit','notfirst')
   }
 
 

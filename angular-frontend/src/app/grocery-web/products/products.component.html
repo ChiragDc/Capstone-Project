@@ -26,6 +26,11 @@
           <div class="col-4 mt-1  " *ngIf="!isProductSelected(order.product)" style="margin-left: 15px">
             <input type="number" min="0" max="10" class="form-control" [(ngModel)]="order.quantity" />
           </div>
+          <!-- <div>
+            <button ng-click="minus(order)" class="btn btn-default">-</button>
+            <input [(ngModel)]="order.quantity" type="number" name="quantity"/>
+            <button class="btn btn-default" ng-click="plus(order)">+</button>
+          </div> -->
           <div class="col-6 " *ngIf="!isProductSelected(order.product)">
             <button class="btn btn-primary p-2 " (click)="addToCart(order)" [disabled]="order.quantity <= 0">
               Buy Now

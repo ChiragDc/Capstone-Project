@@ -4,14 +4,16 @@ import javax.transaction.Transactional;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import com.groceryapp.dao.OrderDao;
 import com.groceryapp.entities.Order;
 import com.groceryapp.service.OrderService;
 
-@Service
+//@Service
 @Transactional
+@Component
 public class OrderServiceImplementation implements OrderService {
 
 	private OrderDao orderDao;

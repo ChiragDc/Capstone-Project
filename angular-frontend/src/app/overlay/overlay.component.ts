@@ -20,7 +20,7 @@ export class OverlayComponent implements OnInit {
       dialogRef.afterOpened().subscribe(_=>{
         setTimeout(()=>{
           dialogRef.close();
-        },3000)
+        },10000)
       })
      }
   

@@ -7,7 +7,7 @@ import { ProductOrder, ProductOrders } from '../Model';
   providedIn: 'root'
 })
 export class OrderService {
-  private ordersUrl = "/api/orders";
+  private ordersUrl = "http://localhost:5000/api/orders";
   private productOrder!: ProductOrder;
   private orders: ProductOrders = new ProductOrders();
 
@@ -24,7 +24,7 @@ export class OrderService {
   constructor(private http: HttpClient) {
   }
   saveOrder(order: ProductOrders) {
-    return this.http.post(this.ordersUrl, order);
+    return this.http.post<ProductOrders>(this.ordersUrl, order);
   }
   set SelectedProductOrder(value: ProductOrder) {
     this.productOrder = value;

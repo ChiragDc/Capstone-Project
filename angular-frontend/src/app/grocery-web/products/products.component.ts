@@ -3,7 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { LoginComponent } from 'src/app/login/login/login.component';
-import { Product, ProductOrder, ProductOrders, Tag, User } from 'src/app/Model';
+import { Order, Product, ProductOrder, ProductOrders, Tag, User } from 'src/app/Model';
 import { OrderService } from 'src/app/service/order.service';
 import { ProductService } from 'src/app/service/product.service';
 import { TagService } from 'src/app/service/tag.service';
@@ -27,14 +27,14 @@ export class ProductsComponent implements OnInit {
   showMyContainerInfo = false;
   showBtn = -1;
   idCart!: number;
-
+  
   constructor(private orderService: OrderService, private router: Router, private dialog: MatDialog,
     private productService: ProductService, private userService: UserService) {
     this.userService.findByUsername(this.userService.getUsername()).subscribe(user => {
       this.user = user;
     });
   }
-
+  
   ngOnInit() {
     this.productOrders = [];
     this.loadProducts();
