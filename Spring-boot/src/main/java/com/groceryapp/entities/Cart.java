@@ -12,79 +12,77 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 @Entity
 @Table(name = "carts")
 public class Cart {
- @Id
- @GeneratedValue(strategy = GenerationType.IDENTITY)
- private Long id;
-	 
- private String name;   
- private Double price;   
- private int quantity;  
- private String pictureUrl;
-    
- @JsonBackReference(value = "user")
- @ManyToOne
- private User user;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 
- public Cart() {
-  super();
- }
+	private String name;
+	private Double price;
+	private int quantity;
+	private String pictureUrl;
 
- public Cart(String name, Double price, int quantity, 
-    String pictureUrl, User user) {
-   super();
-   this.name = name;
-   this.price = price;
-   this.quantity = quantity;
-   this.pictureUrl = pictureUrl;
-   this.user = user;
- }
+	@JsonBackReference(value = "user")
+	@ManyToOne
+	private User user;
 
- public Long  getId() {
-   return id;
- }
+	public Cart() {
+		super();
+	}
 
- public void setId(long id) {
-   this.id = id;
- }
+	public Cart(String name, Double price, int quantity, String pictureUrl, User user) {
+		super();
+		this.name = name;
+		this.price = price;
+		this.quantity = quantity;
+		this.pictureUrl = pictureUrl;
+		this.user = user;
+	}
 
- public String getName() {
-   return name;
- }
+	public Long getId() {
+		return id;
+	}
 
- public void setName(String name) {
-   this.name = name;
- }
+	public void setId(long id) {
+		this.id = id;
+	}
 
- public Double  getPrice() {
-   return price;
- }
+	public String getName() {
+		return name;
+	}
 
- public void setPrice(Double price) {
-   this.price = price;
- }
+	public void setName(String name) {
+		this.name = name;
+	}
 
- public int  getQuantity() {
-   return quantity;
- }
+	public Double getPrice() {
+		return price;
+	}
 
- public void setQuantity(int quantity) {
-   this.quantity = quantity;
- }
+	public void setPrice(Double price) {
+		this.price = price;
+	}
 
- public String getPictureUrl() {
-   return pictureUrl;
- }
+	public int getQuantity() {
+		return quantity;
+	}
 
- public void setPictureUrl(String pictureUrl) {
-   this.pictureUrl = pictureUrl;
- }
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
 
- public User getUser() {
-   return user;
- }
+	public String getPictureUrl() {
+		return pictureUrl;
+	}
 
- public void setUser(User user) {
-   this.user = user;
- }	
+	public void setPictureUrl(String pictureUrl) {
+		this.pictureUrl = pictureUrl;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
 }
-

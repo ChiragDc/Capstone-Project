@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgDialogAnimationService } from 'ng-dialog-animation';
+import Swal from 'sweetalert2';
 import { AddCategoryComponent } from '../admin/add-category/add-category.component';
 import { AddProductComponent } from '../admin/add-product/add-product.component';
 import { AddTagComponent } from '../admin/add-tag/add-tag.component';
@@ -72,11 +73,39 @@ export class ProfileComponent implements OnInit {
     this.dialog.open(UpdateProfileComponent);
   }
   deleteCart(idPro: any, idUser: any) {
-    if (confirm('Are you sure')) {
-      this.cartService.removeFromCart(idPro, idUser).subscribe(() => {
-        window.location.reload();
-      })
-    }
+
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes,Delete it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.cartService.removeFromCart(idPro, idUser).subscribe(() => {
+          setTimeout(function () {
+            window.location.replace(`/profile/${idUser}`)
+          }, 2000);
+
+
+        })
+        Swal.fire(
+          'Deleted!',
+          'Item has been Removed',
+          'success'
+        )
+      }
+    })
+
+
+    // if (confirm('Are you sure')) {
+      
+    //   this.cartService.removeFromCart(idPro, idUser).subscribe(() => {
+    //     window.location.reload();
+    //   })
+    // }
   }
   sampleProduct(name: string) {
     this.router.navigate(['/buy/product/', name]);

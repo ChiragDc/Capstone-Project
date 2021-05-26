@@ -29,7 +29,8 @@ export class ProductsComponent implements OnInit {
   idCart!: number;
   
   constructor(private orderService: OrderService, private router: Router, private dialog: MatDialog,
-    private productService: ProductService, private userService: UserService) {
+    private productService: ProductService, private userService: UserService
+    ) {
     this.userService.findByUsername(this.userService.getUsername()).subscribe(user => {
       this.user = user;
     });

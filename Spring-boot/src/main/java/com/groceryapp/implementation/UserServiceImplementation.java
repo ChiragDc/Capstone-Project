@@ -26,14 +26,14 @@ public class UserServiceImplementation implements UserService {
 			user.setAdmin(true);
 		}
 
-		for (User existUser : users) {
-
-			if (user.getUsername().equals(existUser.getUsername())) {
-				existUser.setUsername(existUser.getUsername());
-				existUser.setPassword(existUser.getPassword());
-				return userDao.save(existUser);
-			}
-		}
+//		for (User existUser : users) {
+//
+//			if (user.getUsername().equals(existUser.getUsername())) {
+//				existUser.setUsername(existUser.getUsername());
+//				existUser.setPassword(existUser.getPassword());
+//				return userDao.save(existUser);
+//			}
+//		}
 
 		return userDao.save(user);
 	}

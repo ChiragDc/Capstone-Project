@@ -81,6 +81,16 @@ export class SampleProductComponent implements OnInit {
     this.orderService.SelectedProductOrder = order;
     this.selectedProductOrder = this.orderService.SelectedProductOrder;
     this.productSelected = true;
+      this.cart.name = order.product.name;
+    this.cart.price = order.product.price;
+    this.cart.quantity = order.quantity;
+    this.cart.pictureUrl = order.product.pictureUrl;
+    this.cartService.addCartToUser(this.cart, this.user.id).subscribe(cart => {
+      this.cart = cart;
+      this.cartService.saveCartName(this.cart.name);
+      console.log('added i guess',cart.name,cart.price)
+    })
+    
   }
   removeFromCart(productOrder: ProductOrder) {
     let index = this.getProductIndex(productOrder.product);

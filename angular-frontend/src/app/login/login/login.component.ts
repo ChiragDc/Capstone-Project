@@ -41,6 +41,7 @@ export class LoginComponent implements OnInit {
             if(result){
               Swal.fire('Succesfully Logged In');
               this.userService.saveUsername(this.user.username);
+              
                   window.location.replace("/")
             }
             else{

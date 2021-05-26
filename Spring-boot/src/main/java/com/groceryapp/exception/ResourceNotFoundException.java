@@ -1,7 +1,11 @@
 package com.groceryapp.exception;
 
 public class ResourceNotFoundException extends RuntimeException{
-	 public ResourceNotFoundException() {
+	 /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	public ResourceNotFoundException() {
 	        super();
 	    }
 	 public ResourceNotFoundException(final String message) {

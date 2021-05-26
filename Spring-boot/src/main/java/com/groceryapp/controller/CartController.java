@@ -17,7 +17,7 @@ import com.groceryapp.service.CartService;
 
 @RestController
 @RequestMapping("/api")
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "http://localhost:4200")
 public class CartController {
 	@Autowired
 	private CartService cartService;

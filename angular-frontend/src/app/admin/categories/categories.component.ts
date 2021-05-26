@@ -88,9 +88,7 @@ export class CategoriesComponent implements OnInit {
       }
     })
 
-    // this.categoryService.deleteCategory(idCategory).subscribe(() => {
-    //   window.location.replace(`/profile/${idUser}`)
-    // })
+    
 
   }
   editCategory(idCategory: any) {
