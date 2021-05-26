@@ -1,13 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
-import { ProductOrder, ProductOrders } from '../Model';
+import { Observable, Subject } from 'rxjs';
+import { OrderHistory, ProductOrder, ProductOrders } from '../Model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class OrderService {
-  private ordersUrl = "http://localhost:5000/api/orders";
+ 
   private productOrder!: ProductOrder;
   private orders: ProductOrders = new ProductOrders();
 
@@ -23,9 +23,7 @@ export class OrderService {
 
   constructor(private http: HttpClient) {
   }
-  saveOrder(order: ProductOrders) {
-    return this.http.post<ProductOrders>(this.ordersUrl, order);
-  }
+  
   set SelectedProductOrder(value: ProductOrder) {
     this.productOrder = value;
     this.productOrderSubject.next();
@@ -51,5 +49,8 @@ export class OrderService {
   set Total(value: number) {
     this.total = value;
     this.totalSubject.next();
+  }
+  addOrder(orderHistory: OrderHistory): Observable<OrderHistory> {
+    return this.http.post<OrderHistory>('http://localhost:5000/api/orderHistory', orderHistory);
   }
 }

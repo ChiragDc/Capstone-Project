@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
+import { NgDialogAnimationService } from 'ng-dialog-animation';
 import { AddCategoryComponent } from '../admin/add-category/add-category.component';
 import { AddProductComponent } from '../admin/add-product/add-product.component';
 import { AddTagComponent } from '../admin/add-tag/add-tag.component';
+import { OrderhistoryComponent } from '../admin/orderhistory/orderhistory.component';
 
 import { User, Category, Cart } from '../Model';
 import { CartService } from '../service/cart.service';
@@ -20,11 +22,12 @@ export class ProfileComponent implements OnInit {
   user: User = {} as User;
   categories!: Category[];
   carts!: Cart[];
-  id!:User;
+  id!: User;
   cartLength = 0;
 
   constructor(private userService: UserService, private route: ActivatedRoute, private dialog: MatDialog,
-    private categoryService: CategoryService, private cartService: CartService, private router: Router) {
+    private categoryService: CategoryService, private cartService: CartService, private router: Router,
+    public adialog: NgDialogAnimationService) {
 
     this.route.params.subscribe(
       params => {
@@ -48,7 +51,7 @@ export class ProfileComponent implements OnInit {
   logout(id: number) {
     window.location.replace("/dashboard");
     this.userService.signOut();
-     this.userService.setItem('visit','')
+    this.userService.setItem('visit', '')
   }
   addCategory(idUser: number) {
     this.dialog.open(AddCategoryComponent, {
@@ -56,7 +59,7 @@ export class ProfileComponent implements OnInit {
     })
   }
 
-  addProduct(idCategory:any) {
+  addProduct(idCategory: any) {
     this.dialog.open(AddProductComponent, {
       data: { idCategory }
     })
@@ -65,10 +68,10 @@ export class ProfileComponent implements OnInit {
   addTag() {
     this.dialog.open(AddTagComponent);
   }
-  updateProfile(id:number) {
+  updateProfile(id: number) {
     this.dialog.open(UpdateProfileComponent);
   }
-  deleteCart(idPro:any, idUser:any) {
+  deleteCart(idPro: any, idUser: any) {
     if (confirm('Are you sure')) {
       this.cartService.removeFromCart(idPro, idUser).subscribe(() => {
         window.location.reload();
@@ -78,5 +81,21 @@ export class ProfileComponent implements OnInit {
   sampleProduct(name: string) {
     this.router.navigate(['/buy/product/', name]);
   }
+  openOrders() {
+
+    let dialogRef = this.adialog.open(OrderhistoryComponent, {
+      width: window.innerWidth + 'px',
+      height: window.innerHeight + 'px',
+      maxWidth: window.innerWidth + 'px',
+      maxHeight: window.innerHeight + 'px',
+      hasBackdrop: true,
+      animation: { to: "bottom" }
+
+
+    });
+  }
+
+
+
 
 }

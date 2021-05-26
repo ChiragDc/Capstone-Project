@@ -18,12 +18,11 @@ export interface Category {
     id: number;
     name: string;
 }
-export interface Comment {
-    id: number;
-    addedAt: any;
-    addedBy: string;
-    message: string;
-    title: string;
+export interface OrderHistory{
+    uname:string;
+    orderTotal:number;
+    bankName:string;
+    dateCreated:string;
 }
 
 export interface Order {

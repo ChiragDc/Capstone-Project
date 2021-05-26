@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Subscription } from 'rxjs';
-import { Bank, BANKS, ProductOrders, User } from 'src/app/Model';
+import { Bank, BANKS, OrderHistory, ProductOrders, User } from 'src/app/Model';
 import { OrderService } from 'src/app/service/order.service';
+import { OrderhistoryService } from 'src/app/service/orderhistory.service';
 import { UserService } from 'src/app/service/user.service';
 import { UpdateProfileComponent } from 'src/app/update-profile/update-profile.component';
 import Swal from 'sweetalert2';
@@ -18,6 +19,7 @@ export class OrdersComponent implements OnInit {
   paid = false;
   sub!: Subscription;
   user: User = new User();
+  // orderHistory:OrderHistory=new OrderHistory();
   hideUpdateMessage = true;
   id!: number;
   name!: string
@@ -29,29 +31,47 @@ export class OrdersComponent implements OnInit {
   newDate!: Date;
   hideItem!: boolean;
   bankList: Bank[] = BANKS;
+
   bname!: string;
   burl!: string;
   selectedOption!: string;
   printedOption!: string;
 
-  constructor(private orderService: OrderService, private userService: UserService, private dialog: MatDialog) {
+
+  bankName!: string;
+  dateCreated!: Date;
+  uname!: string;
+  orderTotal!: number;
+  
+  constructor(private orderService: OrderService, private userService: UserService, private dialog: MatDialog
+    , private orderHistoryService: OrderhistoryService,
+    ) {
     this.orders = this.orderService.ProductOrders;
+    
   }
 
   ngOnInit() {
     this.userService.findByUsername(this.userService.getUsername()).subscribe(user => {
       this.user = user;
-
+     
     })
-    this.sub = this.orderService.OrdersChanged.subscribe(() => {
-      this.orders = this.orderService.ProductOrders;
-    });
+    // this.sub = this.orderService.OrdersChanged.subscribe(() => {
+    //   this.orders = this.orderService.ProductOrders;
+    // });
     this.loadTotal();
     this.newDate = new Date();
+
   }
+ 
+  orderHistory: OrderHistory = {
+    uname: this.user.username,
+    bankName: this.bname,
+    dateCreated:"",
+    orderTotal: this.total
+  };
 
   pay() {
-    console.log(this.selectedOption);
+    console.log(this.bname, 'here name');
 
     let timerInterval: NodeJS.Timeout
     Swal.fire({
@@ -78,13 +98,28 @@ export class OrdersComponent implements OnInit {
         imageHeight: 200,
         imageAlt: 'Custom image',
       })
-      /* Read more about handling dismissals below */
+     
       if (result.dismiss === Swal.DismissReason.timer) {
         console.log('I was closed by the timer')
 
         this.paid = true;
         this.hideDiv = false;
-        this.orderService.saveOrder(this.orders).subscribe();
+        
+        console.log('check start')
+        
+        this.orderHistory.uname=this.user.username;
+        this.orderHistory.dateCreated=""+this.newDate.toString();
+        this.orderHistory.orderTotal=this.total;
+        this.orderHistory.bankName=this.selectedOption;
+
+        console.log(this.orderHistory, this.orderTotal)
+        this.orderHistoryService.addOrderHistory(this.orderHistory).subscribe(
+          orderHistory => {
+            this.orderHistory = this.orderHistory
+          }
+        )
+
+        console.log(this.total, this.newDate, this.user.username)
       }
     })
 

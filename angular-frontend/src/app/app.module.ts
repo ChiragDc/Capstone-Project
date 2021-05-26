@@ -30,6 +30,8 @@ import { RegisterComponent } from './register/register.component';
 import { FooterComponent } from './footer/footer.component';
 import { OverlayComponent } from './overlay/overlay.component';
 import { NgDialogAnimationService } from 'ng-dialog-animation';
+import { OrderhistoryComponent } from './admin/orderhistory/orderhistory.component';
+
 
 @NgModule({
   declarations: [
@@ -53,7 +55,8 @@ import { NgDialogAnimationService } from 'ng-dialog-animation';
     ShoppingCartComponent,
     RegisterComponent,
     FooterComponent,
-    OverlayComponent
+    OverlayComponent,
+    OrderhistoryComponent
   ],
   imports: [
     BrowserModule,

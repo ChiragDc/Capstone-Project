@@ -1,0 +1,19 @@
+<i class="hov fas fa-window-close fa-2x text-danger" style="position: absolute; right: 2%; top:2%;" (click)="close()"></i>
+    <h2 class="text-center" style="font-family: 'Roboto', sans-serif;">Order Details</h2>
+<table mdbTable class="table-dark">
+    <thead>
+        <tr>
+            <th  class="text-center" *ngFor="let head of headElements" scope="col">{{head}} </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr mdbTableCol *ngFor="let order of orderHistory">
+            
+            <th class="text-center">{{order.uname}}</th>
+            <td  class="text-center">{{order.orderTotal}}</td>
+            <td  class="text-center"><img src="{{order.bankName}}" style="height: 50px; width: 70px;" alt=""> </td>
+
+            <td  class="text-center">{{order.dateCreated}}</td>
+        </tr>
+    </tbody>
+</table>
